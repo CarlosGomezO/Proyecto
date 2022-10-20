@@ -1,0 +1,48 @@
+{% extends "AppCoder/padre.html" %}
+{% load static %}
+
+
+{% block titulo %}
+<h1>Inicia sesion<h1>
+
+    <form action="" method="POST"> {% csrf_token %}
+        
+            
+            {{formulario.as_p}}
+
+
+
+
+       <div> 
+        <input type="submit" value= "Inicia sesión">
+       </div>
+ </form>
+
+{% endblock %}
+
+{% block titulo2 %}
+
+
+
+{% block descripcion %} 
+
+<form action="/AppCoder/resultados/" method="GET"> {% csrf_token %}
+
+    <h2> Busqueda </h2>
+   <input type="text" name = "email" id ="email" >
+  
+    <input type="submit" value= "Buscar">
+
+</form> 
+
+{% endblock %}
+
+
+<p>Estamos buscando: {{email}} </p>
+
+{% for x in datos %}
+    <p> Nombre: {{x.nombre}} --- Email: {{x.email}} ---- Phone: {{x.phone}}  </p>
+{% endfor %}
+
+
+{% endblock %}

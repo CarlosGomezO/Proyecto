@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Landing Page - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'AppCoder/assets/favicon.ico' %}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'AppCoder/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+
+                <a class="navbar-brand" href="{% url 'beginning' %}">Inicio</a>
+                {% if request.user.is_authenticated %} 
+                <a class="navbar-brand" href="{% url 'DataLeer' %}">Lista</a>
+                <a class="navbar-brand" href="{% url 'AboutMe' %}">AboutMe</a>
+                <a class="navbar-brand" href="{% url 'FormularioDatos' %}">Formularios</a>
+                <a class="navbar-brand" href="{% url 'AgregarImagen' %}">Imagenes</a>
+                
+                {% endif%}
+              
+
+                {% if request.user.is_authenticated %} 
+
+                    <p>Hola {{user.first_name}}
+
+                    {% with user.avatar_set.first as miAvatar%}
+                    
+                        {%if miAvatar %}
+                        
+                            <img src="{{miAvatar.imagen.url}}" alt="No encontro">
+                            
+                        {% endif%}
+
+
+
+                    {%endwith%}
+
+                    <a class="btn btn-primary" href={% url 'EditarUsuario'%} >Editar Usuario</a>
+                    <a class="btn btn-primary" href={% url 'Logout' %} >Logout</a>
+                
+                {% else %}
+                    <a class="btn btn-primary" href={% url 'Login' %} >Iniciar Sesión</a>
+                    <a class="btn btn-primary" href={% url 'SignUp' %} >Registrarse</a>
+                
+                {% endif %}
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="text-center text-white">
+                            <!-- Page heading-->
+                            <h1 class="mb-5">
+
+                                {% block titulo %}
+                                
+                                {% endblock %}
+                            </h1>
+
+                            <!-- Signup form-->
+                            <!-- * * * * * * * * * * * * * * *-->
+                            <!-- * * SB Forms Contact Form * *-->
+                            <!-- * * * * * * * * * * * * * * *-->
+                            <!-- This form is pre-integrated with SB Forms.-->
+                            <!-- To make this form functional, sign up at-->
+                            <!-- https://startbootstrap.com/solution/contact-forms-->
+                            <!-- to get an API token!-->
+                            
+                            
+
+                       
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+      
+        <!-- Image Showcases-->
+        <section class="showcase">
+            <div class="container-fluid p-0">
+                <div class="row g-0">
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-1.jpg')"></div>
+                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                        <h2>Esta es mi Web </h2>
+                        <p class="lead mb-0">En esta pagina se probaran todas las funcionalidades de una pagina Web y se cargara información para futuras oportunidades</p>
+                    </div>
+                </div>
+                <div class="row g-0">
+                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-2.jpg')"></div>
+                    <div class="col-lg-6 my-auto showcase-text">
+                        <h2>Administración de una base de datos con SQL</h2>
+                        <p class="lead mb-0"> Uno de los principales objetivos de este blog es poder registrar y administrar la información con un CRUD </p>
+                    </div>
+                </div>
+                <div class="row g-0">
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-3.jpg')"></div>
+                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                        <h2>Crea tu cuenta y empieza a probar todos los botones!</h2></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonials-->
+        <section class="testimonials text-center bg-light">
+            <div class="container">
+                <h2 class="mb-5">Funciones de la Web</h2>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-1.jpg" alt="..." />
+                            <h5>Login y Logout</h5>
+                            <p class="font-weight-light mb-0">Inicia sesión y modifica tu datos personales</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-2.jpg" alt="..." />
+                            <h5> Administra </h5>
+                            <p class="font-weight-light mb-0"> Crea personas y modifica sus datos </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-3.jpg" alt="..." />
+                            <h5>Buscador</h5>
+                            <p class="font-weight-light mb-0">Utiliza el buscado de la base de datos"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Call to Action-->
+        <section class="call-to-action text-white text-center" id="signup">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        
+                        
+                        
+                        {% block titulo2 %}
+
+                        
+                        {% endblock %}
+
+
+                        {% block description %}
+
+                        
+                        {% endblock %}
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                        <ul class="list-inline mb-2">
+                            <li class="list-inline-item">About</li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item">Contact</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item">Terms of Use</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item">Privacy Policy</a></li>
+                        </ul>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2022. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item me-4">
+                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                            </li>
+                            <li class="list-inline-item me-4">
+                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
